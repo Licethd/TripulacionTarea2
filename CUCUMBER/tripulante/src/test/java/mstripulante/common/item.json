@@ -1,0 +1,10 @@
+{
+	"Nombre": "${Nombre}",
+	"Apellido": "${Apellido}",
+	"EmailAddress": "${EmailAddress}",
+	"Estado": "${Estado}",
+	"Tipo": "${Tipo}",
+	"HorasVuelo": "${HorasVuelo}",
+	"NroMillas": "${NroMillas}",
+	"KeyCargo": "${KeyCargo}"
+}
