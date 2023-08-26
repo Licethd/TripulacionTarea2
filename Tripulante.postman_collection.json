@@ -24,12 +24,10 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Status code is not 400\", function () {\r",
-									"    // const responseBody;\r",
 									"    if (pm.response.code === 400) {\r",
 									"      const  responseBody = {\r",
 									"            error: \"Error de solicitud\"\r",
 									"        };\r",
-									"\r",
 									"    } else {\r",
 									"       const responseBody = {\r",
 									"            error: \"Registro exitoso\"\r",
@@ -37,15 +35,6 @@
 									"    }\r",
 									"    pm.response.json(responseBody);\r",
 									"\r",
-									"    // const responseBody = pm.response.text();\r",
-									"    // pm.expect(responseBody.error).to.eql(\"Error!!!\");\r",
-									"\r",
-									"\r",
-									"    // pm.response.to.have.status(400);\r",
-									"    // const responseBody = {\r",
-									"    //     error: \"Error de solicitud\"\r",
-									"    // };\r",
-									"    // pm.response.json(responseBody);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Response not empty\", () => {\r",
@@ -71,7 +60,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"Nombre\": \"Danny\",\r\n\t\"Apellido\": \"Flores\",\r\n\t\"EmailAddress\": \"danny@gmail.com\",\r\n\t\"Estado\": \"1\",\r\n\t\"Tipo\": \"AIRE\",\r\n\t\"HorasVuelo\": 300,\r\n\t\"NroMillas\": 3556,\r\n\t\"KeyCargo\": \"7aeb23be-1fbc-40c0-bae9-eb87ce3c87a6\"\r\n}",
+							"raw": "{\r\n\t\"Nombre\": \"Dannyss\",\r\n\t\"Apellido\": \"Flores\",\r\n\t\"EmailAddress\": \"danny@gmail.com\",\r\n\t\"Estado\": \"1\",\r\n\t\"Tipo\": \"AIRE\",\r\n\t\"HorasVuelo\": 300,\r\n\t\"NroMillas\": 3556,\r\n\t\"KeyCargo\": \"7aeb23be-1fbc-40c0-bae9-eb87ce3c87a6\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
