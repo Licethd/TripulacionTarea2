@@ -64,21 +64,34 @@ public class MSTripulanteSteps {
         world.scenarioContext.put("requestStr", jsonAsString);
     }
 
-    @Given("an item with invalid details")
+    @Given("an tripulante with invalid details")
     public void getItemInvalidData(@Transpose DataTable dataTable) throws IOException {
         List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
-        String codigo = data.get(0).get("codigo");
+        String Nombre = data.get(0).get("Nombre");
+        String Apellido = data.get(0).get("Apellido");
+        String EmailAddress = data.get(0).get("EmailAddress");
+        String Estado = data.get(0).get("Estado");
+        String Tipo = data.get(0).get("Tipo");
+        String HorasVuelo = data.get(0).get("HorasVuelo");
+        String NroMillas = data.get(0).get("NroMillas");
+        String KeyCargo = data.get(0).get("KeyCargo");
 
         Map<String, Object> valuesToTemplate = new HashMap<>();
-        valuesToTemplate.put("codigo", codigo);
-        valuesToTemplate.put("nombre", "");
+        valuesToTemplate.put("Nombre", Nombre);
+        valuesToTemplate.put("Apellido", Apellido);
+        valuesToTemplate.put("EmailAddress", EmailAddress);
+        valuesToTemplate.put("Estado", Estado);
+        valuesToTemplate.put("Tipo", Tipo);
+        valuesToTemplate.put("HorasVuelo", HorasVuelo);
+        valuesToTemplate.put("NroMillas", NroMillas);
+        valuesToTemplate.put("KeyCargo", KeyCargo);
 
         String jsonAsString = jsonTemplate(envConfig.getProperty("mstripulante-item_request"), valuesToTemplate);
 
         world.scenarioContext.put("requestStr", jsonAsString);
     }
 
-    @When("request is submitted for item creation")
+    @When("request is submitted for tripulante creation")
     public void submitItemCreation() {
         String payload = world.scenarioContext.get("requestStr").toString();
         Response response = request
@@ -91,7 +104,7 @@ public class MSTripulanteSteps {
         world.scenarioContext.put("response", response);
     }
 
-    @Then("verify that the Item HTTP response is {int}")
+    @Then("verify that the tripulante HTTP response is {int}")
     public void verifyHTTPResponseCode(Integer status) {
         Response response = (Response) world.scenarioContext.get("response");
         Integer actualStatusCode = response.then()
@@ -100,7 +113,7 @@ public class MSTripulanteSteps {
         Assert.assertEquals(status, actualStatusCode);
     }
 
-    @Then("a item id is returned")
+    @Then("a tripulante id is returned")
     public void checkItemId() {
         Response response = (Response) world.scenarioContext.get("response");
         String responseString = response.then().extract().asString();

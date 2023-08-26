@@ -1,0 +1,649 @@
+{
+	"info": {
+		"_postman_id": "7884ad31-c98e-4b8a-b73a-004d62752150",
+		"name": "Tripulante",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20195379",
+		"_collection_link": "https://crimson-comet-263069.postman.co/workspace/dmsNur~a2af8152-e22a-4449-9412-f2d2dc1b4f40/collection/20195379-7884ad31-c98e-4b8a-b73a-004d62752150?action=share&source=collection_link&creator=20195379"
+	},
+	"item": [
+		{
+			"name": "Tripulante",
+			"item": [
+				{
+					"name": "registro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var data = pm.response.json();\r",
+									"    pm.environment.set(\"key_tripulante\", data);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is not 400\", function () {\r",
+									"    // const responseBody;\r",
+									"    if (pm.response.code === 400) {\r",
+									"      const  responseBody = {\r",
+									"            error: \"Error de solicitud\"\r",
+									"        };\r",
+									"\r",
+									"    } else {\r",
+									"       const responseBody = {\r",
+									"            error: \"Registro exitoso\"\r",
+									"        };\r",
+									"    }\r",
+									"    pm.response.json(responseBody);\r",
+									"\r",
+									"    // const responseBody = pm.response.text();\r",
+									"    // pm.expect(responseBody.error).to.eql(\"Error!!!\");\r",
+									"\r",
+									"\r",
+									"    // pm.response.to.have.status(400);\r",
+									"    // const responseBody = {\r",
+									"    //     error: \"Error de solicitud\"\r",
+									"    // };\r",
+									"    // pm.response.json(responseBody);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response not empty\", () => {\r",
+									"    pm.expect(pm.response.text()).not.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Retorna un UUID\", function () {\r",
+									"    const responde = pm.response.text();\r",
+									"    const uuidRegex = /^\\\"[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\\\"$/;\r",
+									"    pm.expect(responde).to.match(uuidRegex);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"Nombre\": \"Danny\",\r\n\t\"Apellido\": \"Flores\",\r\n\t\"EmailAddress\": \"danny@gmail.com\",\r\n\t\"Estado\": \"1\",\r\n\t\"Tipo\": \"AIRE\",\r\n\t\"HorasVuelo\": 300,\r\n\t\"NroMillas\": 3556,\r\n\t\"KeyCargo\": \"7aeb23be-1fbc-40c0-bae9-eb87ce3c87a6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tripulante/registro",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulante",
+								"registro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\": \"Laura L\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tripulante/{{key_tripulante}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulante",
+								"{{key_tripulante}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByKey",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tripulante/{{key_tripulante}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulante",
+								"{{key_tripulante}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/tripulante/{{key_tripulante}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulante",
+								"{{key_tripulante}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"Response not empty\",()=>{\r",
+									"    pm.expect(pm.response.text()).not.empty;\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tripulante",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulante"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cargo",
+			"item": [
+				{
+					"name": "registro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var data = pm.response.json();\r",
+									"    pm.environment.set(\"key_cargo\", data);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"Descripcion\": \"Personal de prueba\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cargo/registro",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cargo",
+								"registro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Descripcion\": \"Personal de Apoyo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cargo/{{key_cargo}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cargo",
+								"{{key_cargo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByKey",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cargo/{{key_cargo}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cargo",
+								"{{key_cargo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/cargo/{{key_cargo}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cargo",
+								"{{key_cargo}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"Response not empty\",()=>{\r",
+									"    pm.expect(pm.response.text()).not.empty;\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cargo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cargo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tripulacion",
+			"item": [
+				{
+					"name": "registro",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var data = pm.response.json();\r",
+									"    pm.environment.set(\"key_tripulacion\", data);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"Descripcion\": \"GRUPO-POSMAN\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tripulacion/registro",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulacion",
+								"registro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Descripcion\": \"GRUPO-VERDE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tripulacion/{{key_tripulacion}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulacion",
+								"{{key_tripulacion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addTripulante",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\t\t\"key\":\"ec5b0a1e-e038-4de3-af6d-bee37ad47715\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/tripulacion/addTripulante/{{key_tripulacion}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulacion",
+								"addTripulante",
+								"{{key_tripulacion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByKey",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tripulacion/{{key_tripulacion}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulacion",
+								"{{key_tripulacion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/tripulacion/{{key_tripulacion}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulacion",
+								"{{key_tripulacion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\",()=>{\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"pm.test(\"Response not empty\",()=>{\r",
+									"    pm.expect(pm.response.text()).not.empty;\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tripulacion",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tripulacion"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
